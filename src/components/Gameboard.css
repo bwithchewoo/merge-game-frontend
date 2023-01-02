@@ -1,0 +1,30 @@
+#chessboard{
+    display: grid;
+    grid-template-columns: repeat(8, 100px);
+    grid-template-rows: repeat(8, 100px);
+    width: 800px;
+    height: 800px;
+    background-color: lightblue;
+    
+}
+#chessboard .tile{
+    width: 100px;
+    height: 100px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#chessboard .tile .token{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+#chessboard .tile .token:hover{
+    cursor: grab
+}
+
+#chessboard .tile .token:active {
+    cursor: grabbing;
+}

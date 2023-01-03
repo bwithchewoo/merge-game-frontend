@@ -3,13 +3,13 @@ import './Gameboard.css';
 import Button from './Button';
 const horizontalAxis = [0, 1, 2, 3, 4, 5, 6, 7]
 const verticalAxis = [0, 1, 2, 3, 4, 5, 6, 7]
-export default function Gameboard() {
+export default function Gameboard({boardId}) {
     const [tokens, setTokens] = useState([]);
     const [gridX, setGridX] = useState(0);
     const [gridY, setGridY] = useState(0);
     const [activePiece, setActivePiece] = useState(null);
-    const [boardId, setBoardId] = useState(1);
     const initialBoardState = [];
+    
     
     useEffect(() => {
         fetch(`http://localhost:9292/tokens/${boardId}`)
@@ -18,14 +18,6 @@ export default function Gameboard() {
             setTokens(data)
         })
     }, [boardId]);
-
-    const changeBoardId = (e) => {
-        if (e.target.id === "board 1"){
-            setBoardId(1)}
-        else if (e.target.id === "board 2"){
-            setBoardId(2)
-        }
-    }
 
     const findMatchingTokenIndex = (horizontalPos, verticalPos) => { 
         for (let k = 0; k < tokens.length; k++) {
@@ -194,8 +186,6 @@ export default function Gameboard() {
     }
     return (
     <div>
-        <button id="board 1" onClick={changeBoardId}> Board 1</button>
-        <button id="board 2" onClick={changeBoardId}>Board 2</button>
         <div onMouseUp={(e) => dropPiece(e)}onMouseMove={(e) => movePiece(e)}onMouseDown={e => grabPiece(e)} id="chessboard" ref={chessboardRef}>{initialBoardState}</div>
         <Button generateToken={generateToken}/>
     </div>

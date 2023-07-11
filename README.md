@@ -3,7 +3,7 @@
 ## Description
 
 Generate tokens.
-![tokens](tokens.gif)
+![tokens](token.gif)
 
 Bring two tokens together to increment the number value of the token by 1. If you don't move the token from the same position, it will not increment. You cannot move tokens off the board. 
 ![merge](merge.gif)
